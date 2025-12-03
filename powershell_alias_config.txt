@@ -1,0 +1,11 @@
+# Claude Code 别名配置
+# 请将以下内容复制到您的PowerShell配置文件中
+# PowerShell配置文件路径: C:\Users\霍冠华\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+
+# 添加Claude Code别名
+New-Alias -Name "小宝" -Value "claude" -Force
+New-Alias -Name "hgh" -Value "claude" -Force
+
+# 确保npm全局目录在PATH中
+$env:PATH += ";C:\Program Files\nodejs";
+$env:PATH += ";C:\Users\霍冠华\AppData\Roaming\npm";

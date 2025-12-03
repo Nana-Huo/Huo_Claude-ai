@@ -1,0 +1,29 @@
+# 手动设置 CMD 别名指南
+
+## 临时别名（当前会话有效）
+在CMD窗口中直接执行以下命令：
+
+doskey 小宝=claude $*
+doskey hgh=claude $*
+
+## 永久别名设置
+1. 打开CMD窗口
+2. 执行命令：notepad %USERPROFILE%\alias.cmd
+3. 在打开的记事本中输入：
+   ```
+   @echo off
+   doskey 小宝=claude $*
+   doskey hgh=claude $*
+   ```
+4. 保存并关闭记事本
+5. 执行命令：reg add "HKCU\Software\Microsoft\Command Processor" /v Autorun /t REG_EXPAND_SZ /d "%USERPROFILE%\alias.cmd" /f
+
+## 使用方法
+重启CMD后，可以使用以下命令：
+- 小宝 --version    # 查看Claude版本
+- 小宝             # 启动Claude界面
+- hgh "你的问题"   # 直接提问
+
+## 取消永久别名
+如果需要取消别名，执行以下命令：
+reg delete "HKCU\Software\Microsoft\Command Processor" /v Autorun /f
