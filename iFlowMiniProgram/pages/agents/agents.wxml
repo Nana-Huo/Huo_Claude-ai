@@ -1,0 +1,21 @@
+<!--agents.wxml-->
+<view class="container">
+  <view class="page-title">选择智能体</view>
+  
+  <scroll-view scroll-y="true" style="flex: 1;">
+    <view wx:if="{{loading}}" class="loading">
+      <text>加载中...</text>
+    </view>
+    
+    <view wx:elif="{{agents.length === 0}}" class="empty">
+      <text>没有找到智能体</text>
+    </view>
+    
+    <view wx:else>
+      <view wx:for="{{agents}}" wx:key="id" class="agent-item" bindtap="selectAgent" data-agent="{{item}}">
+        <view class="agent-name">{{item.name}}</view>
+        <view class="agent-description">{{item.description}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

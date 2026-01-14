@@ -1,0 +1,104 @@
+/* app.wxss */
+
+/* 全局样式 */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* 智能体状态样式 */
+.agent-status {
+  padding: 8px 15px;
+  background-color: #e6f7ff;
+  color: #1890ff;
+  font-size: 14px;
+  text-align: center;
+  border-bottom: 1px solid #d9ecff;
+}
+
+/* 聊天消息样式 */
+.message-container {
+  display: flex;
+  margin: 10px;
+  max-width: 80%;
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.ai-message {
+  flex-direction: row;
+}
+
+.message-content {
+  padding: 10px 15px;
+  border-radius: 18px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.user-content {
+  background-color: #07c160;
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+.ai-content {
+  background-color: white;
+  color: #333;
+  border-bottom-left-radius: 5px;
+}
+
+/* 输入区域样式 */
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  border-top: 1px solid #e5e5e5;
+}
+
+.input-box {
+  flex: 1;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+}
+
+.send-btn {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #07c160;
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* 智能体列表样式 */
+.agent-item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.agent-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.agent-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}

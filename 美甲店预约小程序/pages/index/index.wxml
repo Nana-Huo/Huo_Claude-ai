@@ -1,0 +1,90 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input" bindtap="onSearch">
+      <image class="search-icon" src="/images/search.png"></image>
+      <text class="search-placeholder">搜索美甲服务...</text>
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <view class="banner-container">
+    <swiper class="banner-swiper" indicator-dots="true" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#ff6b9d" autoplay="true" interval="3000" duration="500" circular="true" bindchange="onBannerChange">
+      <block wx:for="{{bannerList}}" wx:key="id">
+        <swiper-item>
+          <image class="banner-image" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="banner-title">{{item.title}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-entry">
+    <view class="entry-item" bindtap="goToServices">
+      <image class="entry-icon" src="/images/service-entry.png"></image>
+      <text class="entry-text">全部服务</text>
+    </view>
+    <view class="entry-item" bindtap="goToBooking">
+      <image class="entry-icon" src="/images/booking-entry.png"></image>
+      <text class="entry-text">立即预约</text>
+    </view>
+    <view class="entry-item" bindtap="goToNailArtists">
+      <image class="entry-icon" src="/images/artist-entry.png"></image>
+      <text class="entry-text">美甲师</text>
+    </view>
+    <view class="entry-item" bindtap="goToPromotions">
+      <image class="entry-icon" src="/images/promotion-entry.png"></image>
+      <text class="entry-text">优惠活动</text>
+    </view>
+  </view>
+
+  <!-- 热门服务 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">热门服务</text>
+      <text class="section-more" bindtap="goToServices">查看更多 ></text>
+    </view>
+    <view class="services-grid">
+      <block wx:for="{{services}}" wx:key="id">
+        <view class="service-card" bindtap="goToBooking" data-service-id="{{item.id}}">
+          <image class="service-image" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="service-info">
+            <text class="service-name">{{item.name}}</text>
+            <text class="service-duration">{{item.duration}}</text>
+            <text class="service-price">¥{{item.price}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 推荐美甲师 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">推荐美甲师</text>
+      <text class="section-more" bindtap="goToNailArtists">查看更多 ></text>
+    </view>
+    <scroll-view class="artists-scroll" scroll-x="true" style="width: 100%;">
+      <view class="artists-container">
+        <block wx:for="{{nailArtists}}" wx:key="id">
+          <view class="artist-card" bindtap="goToArtistDetail" data-artist-id="{{item.id}}">
+            <image class="artist-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+            <view class="artist-info">
+              <text class="artist-name">{{item.name}}</text>
+              <text class="artist-specialty">{{item.specialty}}</text>
+              <view class="artist-rating">
+                <text class="rating-text">{{item.rating}}</text>
+                <text class="artist-experience">{{item.experience}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 底部间距 -->
+  <view style="height: 40rpx;"></view>
+</view>

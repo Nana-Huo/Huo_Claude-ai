@@ -1,0 +1,105 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <!-- Logo区域 -->
+  <view class="logo-section">
+    <view class="logo-container">
+      <text class="logo-icon">💅</text>
+    </view>
+    <text class="app-name">美甲店预约</text>
+    <text class="app-slogan">美丽从指尖开始</text>
+  </view>
+
+  <!-- 登录表单 -->
+  <view class="login-section">
+    <view class="login-form">
+      <!-- 手机号输入 -->
+      <view class="input-group">
+        <view class="input-label">手机号</view>
+        <view class="input-wrapper">
+          <input class="input-field" 
+                 type="number" 
+                 placeholder="请输入手机号" 
+                 value="{{phone}}"
+                 maxlength="11"
+                 bindinput="onPhoneInput"
+                 placeholder-class="input-placeholder"/>
+          <view class="country-code">+86</view>
+        </view>
+      </view>
+
+      <!-- 验证码输入 -->
+      <view class="input-group">
+        <view class="input-label">验证码</view>
+        <view class="input-wrapper">
+          <input class="input-field" 
+                 type="number" 
+                 placeholder="请输入验证码" 
+                 value="{{code}}"
+                 maxlength="6"
+                 bindinput="onCodeInput"
+                 placeholder-class="input-placeholder"/>
+          <button class="code-btn {{gettingCode ? 'code-btn-disabled' : ''}}" 
+                  disabled="{{gettingCode}}"
+                  bindtap="onGetCode">
+            <text wx:if="{{gettingCode}}">{{countdown}}s</text>
+            <text wx:else>获取验证码</text>
+          </button>
+        </view>
+      </view>
+
+      <!-- 用户协议 -->
+      <view class="terms-section">
+        <checkbox-group bindchange="onTermsChange">
+          <label class="terms-label">
+            <checkbox value="agree" checked="{{agreeTerms}}"/>
+            <text class="terms-text">
+              我已阅读并同意
+              <text class="terms-link" bindtap="onViewTerms">《用户协议》</text>
+              和
+              <text class="terms-link" bindtap="onViewPrivacy">《隐私政策》</text>
+            </text>
+          </label>
+        </checkbox-group>
+      </view>
+
+      <!-- 登录按钮 -->
+      <button class="login-btn {{phone && code && agreeTerms ? 'login-btn-active' : ''}}" 
+              bindtap="onLogin"
+              disabled="{{!phone || !code || !agreeTerms}}">
+        <text class="login-btn-text">登录</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divider">
+    <view class="divider-line"></view>
+    <text class="divider-text">或</text>
+    <view class="divider-line"></view>
+  </view>
+
+  <!-- 第三方登录 -->
+  <view class="third-party-section">
+    <button class="wechat-btn" bindtap="onWechatLogin">
+      <text class="wechat-icon">📱</text>
+      <text class="wechat-text">微信授权登录</text>
+    </button>
+  </view>
+
+  <!-- 底部选项 -->
+  <view class="bottom-section">
+    <view class="guest-mode" bindtap="onGuestMode">
+      <text class="guest-text">游客模式</text>
+    </view>
+    
+    <view class="home-link" bindtap="goToHome">
+      <text class="home-text">返回首页</text>
+    </view>
+  </view>
+
+  <!-- 版权信息 -->
+  <view class="copyright-section">
+    <text class="copyright-text">© 2024 美甲店预约小程序</text>
+    <text class="copyright-text">由 MiniMax AI 技术支持</text>
+  </view>
+</view>

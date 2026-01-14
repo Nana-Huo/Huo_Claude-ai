@@ -1,0 +1,87 @@
+<!--pages/orders/orders.wxml-->
+<view class="container">
+  <!-- 标签栏 -->
+  <view class="tab-bar">
+    <scroll-view class="tab-scroll" scroll-x="true">
+      <view class="tab-list">
+        <view wx:for="{{tabs}}" wx:key="id" 
+              class="tab-item {{activeTab === item.id ? 'tab-active' : ''}}"
+              data-tab="{{item.id}}"
+              bindtap="onTabChange">
+          <text class="tab-text">{{item.name}}</text>
+          <text class="tab-count" wx:if="{{item.count > 0}}">{{item.count}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="orders-section">
+    <view wx:if="{{filteredOrders.length > 0}}" class="orders-list">
+      <view wx:for="{{filteredOrders}}" wx:key="id" 
+            class="order-item"
+            data-id="{{item.id}}"
+            bindtap="onOrderTap">
+        
+        <!-- 订单头部 -->
+        <view class="order-header">
+          <text class="order-id">订单号：{{item.id}}</text>
+          <view class="status-badge {{getStatusClass(item.status)}}">
+            <text>{{getStatusText(item.status)}}</text>
+          </view>
+        </view>
+
+        <!-- 订单内容 -->
+        <view class="order-content">
+          <view class="service-info">
+            <text class="service-name">{{item.serviceName}}</text>
+            <text class="artist-name">{{item.artistName}}</text>
+          </view>
+          
+          <view class="order-details">
+            <view class="detail-item">
+              <text class="detail-label">服务时间：</text>
+              <text class="detail-value">{{item.date}} {{item.time}}</text>
+            </view>
+            <view class="detail-item">
+              <text class="detail-label">甲型：</text>
+              <text class="detail-value">{{item.nailShape}}</text>
+            </view>
+            <view class="detail-item">
+              <text class="detail-label">联系方式：</text>
+              <text class="detail-value">{{item.phone}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 订单底部 -->
+        <view class="order-footer">
+          <text class="order-price">¥{{item.price}}</text>
+          <view class="order-actions">
+            <view wx:if="{{item.status === 'pending'}}" class="action-buttons">
+              <button class="action-btn btn-cancel" 
+                      data-id="{{item.id}}"
+                      catchtap="onCancelOrder">取消预约</button>
+              <button class="action-btn btn-confirm" 
+                      data-id="{{item.id}}"
+                      catchtap="onConfirmOrder">确认到店</button>
+            </view>
+            <view wx:elif="{{item.status === 'completed'}}" class="action-buttons">
+              <button class="action-btn btn-rebook" 
+                      data-order="{{item}}"
+                      catchtap="onReBook">再次预约</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:else class="empty-state">
+      <view class="empty-icon">📋</view>
+      <text class="empty-title">暂无订单</text>
+      <text class="empty-subtitle">快去预约一个美美的指甲吧！</text>
+      <button class="empty-action" bindtap="goToBooking">立即预约</button>
+    </view>
+  </view>
+</view>

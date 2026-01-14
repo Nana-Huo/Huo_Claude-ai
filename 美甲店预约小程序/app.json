@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/services/services", 
+    "pages/booking/booking",
+    "pages/confirm/confirm",
+    "pages/user/user",
+    "pages/orders/orders",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff6b9d",
+    "navigationBarTitleText": "美甲店预约",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#fff8fb"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#ff6b9d", 
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/services/services", 
+        "text": "服务"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

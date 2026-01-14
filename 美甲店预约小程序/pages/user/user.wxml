@@ -1,0 +1,104 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-info-section">
+    <view class="user-card">
+      <!-- 登录状态 -->
+      <view wx:if="{{!isLoggedIn}}" class="login-section" bindtap="login">
+        <view class="login-avatar">
+          <text class="avatar-icon">👤</text>
+        </view>
+        <view class="login-info">
+          <text class="login-title">点击登录</text>
+          <text class="login-subtitle">登录后可享受更多服务</text>
+        </view>
+        <view class="login-arrow">›</view>
+      </view>
+
+      <!-- 已登录状态 -->
+      <view wx:else class="user-section">
+        <view class="user-profile" bindtap="editProfile">
+          <view class="user-avatar">
+            <image src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+          </view>
+          <view class="user-details">
+            <text class="user-name">{{userInfo.nickName || '美甲爱好者'}}</text>
+            <view class="user-level">
+              <text class="level-tag">普通会员</text>
+              <text class="level-points">{{userStats.points}}积分</text>
+            </view>
+          </view>
+          <view class="profile-arrow">›</view>
+        </view>
+
+        <!-- 用户统计 -->
+        <view class="user-stats">
+          <view class="stat-item" bindtap="goToBookings">
+            <text class="stat-number">{{userStats.totalBookings}}</text>
+            <text class="stat-label">总预约</text>
+          </view>
+          <view class="stat-divider"></view>
+          <view class="stat-item" bindtap="goToBookings">
+            <text class="stat-number">{{userStats.completedBookings}}</text>
+            <text class="stat-label">已完成</text>
+          </view>
+          <view class="stat-divider"></view>
+          <view class="stat-item" bindtap="goToBookings">
+            <text class="stat-number">{{userStats.cancelledBookings}}</text>
+            <text class="stat-label">已取消</text>
+          </view>
+          <view class="stat-divider"></view>
+          <view class="stat-item" bindtap="viewPointsDetail">
+            <text class="stat-number">{{userStats.points}}</text>
+            <text class="stat-label">积分</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快速操作 -->
+  <view class="quick-actions-section" wx:if="{{isLoggedIn}}">
+    <view class="quick-actions">
+      <view wx:for="{{quickActions}}" wx:key="id" 
+            class="quick-action-item" 
+            data-action="{{item.action}}" 
+            bindtap="onQuickActionTap">
+        <text class="action-icon">{{item.icon}}</text>
+        <text class="action-title">{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="menu-list">
+      <view wx:for="{{menuItems}}" wx:key="id" 
+            class="menu-item" 
+            data-action="{{item.action}}" 
+            bindtap="onMenuItemTap">
+        <view class="menu-left">
+          <text class="menu-icon">{{item.icon}}</text>
+          <view class="menu-content">
+            <text class="menu-title">{{item.title}}</text>
+            <text class="menu-desc">{{item.description}}</text>
+          </view>
+        </view>
+        <view class="menu-arrow">›</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section" wx:if="{{isLoggedIn}}">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+
+  <!-- 底部间距 -->
+  <view class="bottom-spacing"></view>
+</view>
+
+<!-- 分享按钮 -->
+<button class="share-btn" open-type="share" bindtap="share">
+  <text>分享小程序</text>
+</button>

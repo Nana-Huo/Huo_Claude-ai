@@ -1,0 +1,524 @@
+/* pages/booking/booking.wxss */
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 120rpx;
+}
+
+/* 进度条 */
+.progress-bar {
+  background: white;
+  padding: 30rpx 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.1);
+  margin-bottom: 20rpx;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.progress-steps::before {
+  content: '';
+  position: absolute;
+  top: 25rpx;
+  left: 25rpx;
+  right: 25rpx;
+  height: 4rpx;
+  background: #e0e0e0;
+  z-index: 1;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.step-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-bottom: 15rpx;
+  transition: all 0.3s ease;
+}
+
+.step-item.active .step-circle {
+  background: #ff6b9d;
+  color: white;
+}
+
+.step-item.current .step-circle {
+  background: #ff6b9d;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4rpx 15rpx rgba(255, 107, 157, 0.4);
+}
+
+.step-label {
+  font-size: 22rpx;
+  color: #999;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 80rpx;
+}
+
+.step-item.active .step-label,
+.step-item.current .step-label {
+  color: #ff6b9d;
+  font-weight: 600;
+}
+
+/* 步骤内容 */
+.step-content {
+  padding: 20rpx;
+}
+
+.step-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+/* 服务信息 */
+.service-info {
+  display: flex;
+  background: white;
+  border-radius: 20rpx;
+  padding: 25rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.08);
+}
+
+.service-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 15rpx;
+  margin-right: 25rpx;
+  flex-shrink: 0;
+}
+
+.service-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.service-duration {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.service-price {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ff6b9d;
+}
+
+/* 区块标题 */
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+/* 日期选择 */
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.date-item {
+  background: white;
+  border-radius: 15rpx;
+  padding: 25rpx 15rpx;
+  text-align: center;
+  border: 2rpx solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.date-item.selected {
+  border-color: #ff6b9d;
+  background: rgba(255, 107, 157, 0.1);
+}
+
+.date-item:active {
+  transform: scale(0.95);
+}
+
+.date-display {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.date-item.selected .date-display {
+  color: #ff6b9d;
+}
+
+/* 时间选择 */
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15rpx;
+}
+
+.time-item {
+  background: white;
+  border-radius: 15rpx;
+  padding: 20rpx 10rpx;
+  text-align: center;
+  border: 2rpx solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.time-item.selected {
+  border-color: #ff6b9d;
+  background: rgba(255, 107, 157, 0.1);
+}
+
+.time-item:active {
+  transform: scale(0.95);
+}
+
+.time-text {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.time-item.selected .time-text {
+  color: #ff6b9d;
+}
+
+/* 美甲师列表 */
+.artists-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.artist-item {
+  background: white;
+  border-radius: 20rpx;
+  padding: 25rpx;
+  display: flex;
+  align-items: center;
+  border: 2rpx solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.artist-item.selected {
+  border-color: #ff6b9d;
+  background: rgba(255, 107, 157, 0.05);
+}
+
+.artist-item.disabled {
+  opacity: 0.6;
+}
+
+.artist-item:active {
+  transform: scale(0.98);
+}
+
+.artist-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 25rpx;
+  border: 3rpx solid #e0e0e0;
+}
+
+.artist-item.selected .artist-avatar {
+  border-color: #ff6b9d;
+}
+
+.artist-info {
+  flex: 1;
+}
+
+.artist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.artist-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.artist-rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  color: #ff9500;
+  font-size: 24rpx;
+  margin-right: 5rpx;
+}
+
+.rating-value {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.artist-specialty {
+  font-size: 26rpx;
+  color: #ff6b9d;
+  margin-bottom: 8rpx;
+  background: rgba(255, 107, 157, 0.1);
+  padding: 6rpx 15rpx;
+  border-radius: 15rpx;
+  display: inline-block;
+}
+
+.artist-experience {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.availability-status {
+  text-align: right;
+}
+
+.status-text {
+  font-size: 22rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+  font-weight: 500;
+}
+
+.status-text.available {
+  color: #52c41a;
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.status-text.unavailable {
+  color: #ff4d4f;
+  background: rgba(255, 77, 79, 0.1);
+}
+
+/* 甲型选择 */
+.nail-styles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25rpx;
+}
+
+.nail-style-item {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx 20rpx;
+  text-align: center;
+  border: 2rpx solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.nail-style-item.selected {
+  border-color: #ff6b9d;
+  background: rgba(255, 107, 157, 0.05);
+}
+
+.nail-style-item:active {
+  transform: scale(0.95);
+}
+
+.nail-style-icon {
+  font-size: 60rpx;
+  margin-bottom: 15rpx;
+}
+
+.nail-style-name {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.nail-style-item.selected .nail-style-name {
+  color: #ff6b9d;
+}
+
+/* 联系表单 */
+.contact-form {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.08);
+}
+
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 15rpx;
+  padding: 25rpx;
+  font-size: 28rpx;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #ff6b9d;
+  background: white;
+}
+
+.form-textarea {
+  width: 100%;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 15rpx;
+  padding: 25rpx;
+  font-size: 28rpx;
+  background: #f8f9fa;
+  min-height: 120rpx;
+  transition: all 0.3s ease;
+}
+
+.form-textarea:focus {
+  border-color: #ff6b9d;
+  background: white;
+}
+
+/* 预约摘要 */
+.booking-summary {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.08);
+}
+
+.summary-section {
+  margin-bottom: 30rpx;
+  padding-bottom: 25rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.summary-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.summary-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.item-label {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.item-value {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+  text-align: right;
+  flex: 1;
+}
+
+.item-value.price {
+  color: #ff6b9d;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+/* 底部操作栏 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 20rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(255, 107, 157, 0.1);
+  z-index: 100;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15rpx;
+}
+
+.btn {
+  flex: 1;
+  padding: 25rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.btn-secondary:active {
+  background: #e0e0e0;
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+  color: white;
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+  background: linear-gradient(135deg, #ff5582, #ff7a99);
+}

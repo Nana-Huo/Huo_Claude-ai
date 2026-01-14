@@ -1,0 +1,266 @@
+/* pages/index/index.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fff8fb 0%, #ffeef8 100%);
+}
+
+/* 搜索栏 */
+.search-bar {
+  padding: 20rpx 30rpx;
+  background: white;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.1);
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 50rpx;
+  padding: 20rpx 30rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.search-input:active {
+  border-color: #ff6b9d;
+  background: #fff;
+}
+
+.search-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+  opacity: 0.6;
+}
+
+.search-placeholder {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 轮播图 */
+.banner-container {
+  margin: 20rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 30rpx rgba(255, 107, 157, 0.15);
+}
+
+.banner-swiper {
+  width: 100%;
+  height: 320rpx;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-title {
+  position: absolute;
+  bottom: 30rpx;
+  left: 30rpx;
+  right: 30rpx;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 15rpx 25rpx;
+  border-radius: 15rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* 快捷入口 */
+.quick-entry {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 20rpx;
+  background: white;
+  margin: 0 20rpx 20rpx 20rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.08);
+}
+
+.entry-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 20rpx;
+  border-radius: 15rpx;
+  transition: transform 0.3s ease;
+}
+
+.entry-item:active {
+  transform: scale(0.95);
+}
+
+.entry-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 15rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entry-text {
+  font-size: 24rpx;
+  color: #666;
+  font-weight: 500;
+}
+
+/* 区块样式 */
+.section {
+  margin: 20rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25rpx;
+  padding: 0 10rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-more {
+  font-size: 26rpx;
+  color: #ff6b9d;
+  font-weight: 500;
+}
+
+/* 热门服务网格 */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.service-card {
+  background: white;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 6rpx 25rpx rgba(255, 107, 157, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.service-card:active {
+  transform: scale(0.95);
+}
+
+.service-image {
+  width: 100%;
+  height: 200rpx;
+}
+
+.service-info {
+  padding: 20rpx;
+}
+
+.service-name {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.service-duration {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 15rpx;
+}
+
+.service-price {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ff6b9d;
+}
+
+/* 美甲师横向滚动 */
+.artists-scroll {
+  background: white;
+  border-radius: 20rpx;
+  padding: 20rpx 0;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.08);
+}
+
+.artists-container {
+  display: flex;
+  padding: 0 20rpx;
+  gap: 30rpx;
+}
+
+.artist-card {
+  flex-shrink: 0;
+  width: 280rpx;
+  background: #f8f9fa;
+  border-radius: 20rpx;
+  padding: 25rpx;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 2rpx solid transparent;
+}
+
+.artist-card:active {
+  transform: scale(0.95);
+  border-color: #ff6b9d;
+}
+
+.artist-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin: 0 auto 20rpx auto;
+  border: 4rpx solid #ff6b9d;
+}
+
+.artist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artist-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.artist-specialty {
+  font-size: 24rpx;
+  color: #ff6b9d;
+  margin-bottom: 15rpx;
+  background: rgba(255, 107, 157, 0.1);
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.artist-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rating-text {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #ff9500;
+  margin-bottom: 5rpx;
+}
+
+.artist-experience {
+  font-size: 22rpx;
+  color: #999;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "iflow-api-server",
+  "version": "1.0.0",
+  "description": "API server to bridge iPhone app with iFlow",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "child_process": "^1.0.2",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,406 @@
+/* pages/login/login.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fff8fb 0%, #ffeef8 100%);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 60rpx;
+}
+
+/* Logo区域 */
+.logo-section {
+  text-align: center;
+  padding: 100rpx 40rpx 80rpx 40rpx;
+}
+
+.logo-container {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 40rpx auto;
+  box-shadow: 0 12rpx 40rpx rgba(255, 107, 157, 0.3);
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20rpx);
+  }
+}
+
+.logo-icon {
+  font-size: 80rpx;
+  color: white;
+}
+
+.app-name {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.app-slogan {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+}
+
+/* 登录表单 */
+.login-section {
+  flex: 1;
+  padding: 0 40rpx;
+}
+
+.login-form {
+  background: white;
+  border-radius: 30rpx;
+  padding: 60rpx 40rpx;
+  box-shadow: 0 20rpx 60rpx rgba(255, 107, 157, 0.1);
+}
+
+/* 输入组 */
+.input-group {
+  margin-bottom: 40rpx;
+}
+
+.input-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 50rpx;
+  padding: 30rpx 35rpx;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: #ff6b9d;
+  background: white;
+  box-shadow: 0 0 0 8rpx rgba(255, 107, 157, 0.1);
+}
+
+.input-field {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333;
+  border: none;
+  background: transparent;
+}
+
+.input-placeholder {
+  color: #999;
+}
+
+.country-code {
+  font-size: 28rpx;
+  color: #666;
+  margin-left: 20rpx;
+  padding: 8rpx 16rpx;
+  background: #ff6b9d;
+  color: white;
+  border-radius: 20rpx;
+  font-weight: 600;
+}
+
+/* 验证码按钮 */
+.code-btn {
+  background: #ff6b9d;
+  color: white;
+  border: none;
+  border-radius: 30rpx;
+  padding: 15rpx 25rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  margin-left: 20rpx;
+  transition: all 0.3s ease;
+}
+
+.code-btn:active {
+  transform: scale(0.95);
+  background: #ff5582;
+}
+
+.code-btn-disabled {
+  background: #ccc;
+  color: #999;
+}
+
+/* 用户协议 */
+.terms-section {
+  margin-bottom: 50rpx;
+}
+
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.terms-label checkbox {
+  margin-right: 15rpx;
+  margin-top: 4rpx;
+}
+
+.terms-text {
+  font-size: 26rpx;
+  color: #666;
+  flex: 1;
+}
+
+.terms-link {
+  color: #ff6b9d;
+  text-decoration: underline;
+}
+
+/* 登录按钮 */
+.login-btn {
+  width: 100%;
+  padding: 35rpx;
+  background: #e0e0e0;
+  color: #999;
+  border: none;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.login-btn-active {
+  background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+  color: white;
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 8rpx 30rpx rgba(255, 107, 157, 0.3);
+}
+
+/* 分割线 */
+.divider {
+  display: flex;
+  align-items: center;
+  padding: 60rpx 40rpx 40rpx 40rpx;
+}
+
+.divider-line {
+  flex: 1;
+  height: 2rpx;
+  background: #e0e0e0;
+}
+
+.divider-text {
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 第三方登录 */
+.third-party-section {
+  padding: 0 40rpx;
+}
+
+.wechat-btn {
+  width: 100%;
+  padding: 30rpx;
+  background: white;
+  color: #333;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.wechat-btn:active {
+  transform: scale(0.98);
+  background: #f8f9fa;
+  border-color: #ff6b9d;
+}
+
+.wechat-icon {
+  font-size: 32rpx;
+  margin-right: 15rpx;
+}
+
+.wechat-text {
+  color: #333;
+}
+
+/* 底部选项 */
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx;
+  margin-top: 40rpx;
+}
+
+.guest-mode,
+.home-link {
+  padding: 20rpx 30rpx;
+  border-radius: 30rpx;
+  transition: all 0.3s ease;
+}
+
+.guest-mode:active,
+.home-link:active {
+  background: rgba(255, 107, 157, 0.1);
+}
+
+.guest-text,
+.home-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 版权信息 */
+.copyright-section {
+  text-align: center;
+  padding: 60rpx 40rpx 0 40rpx;
+  opacity: 0.7;
+}
+
+.copyright-text {
+  font-size: 22rpx;
+  color: #999;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+/* 动画效果 */
+.login-form {
+  animation: formSlideUp 0.6s ease-out;
+}
+
+@keyframes formSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.third-party-section {
+  animation: thirdPartySlideUp 0.8s ease-out;
+}
+
+@keyframes thirdPartySlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式适配 */
+@media (max-width: 375px) {
+  .logo-section {
+    padding: 80rpx 30rpx 60rpx 30rpx;
+  }
+  
+  .logo-container {
+    width: 140rpx;
+    height: 140rpx;
+  }
+  
+  .logo-icon {
+    font-size: 70rpx;
+  }
+  
+  .app-name {
+    font-size: 42rpx;
+  }
+  
+  .login-section {
+    padding: 0 30rpx;
+  }
+  
+  .login-form {
+    padding: 50rpx 30rpx;
+  }
+  
+  .divider {
+    padding: 50rpx 30rpx 30rpx 30rpx;
+  }
+  
+  .third-party-section {
+    padding: 0 30rpx;
+  }
+  
+  .bottom-section {
+    padding: 30rpx;
+  }
+  
+  .copyright-section {
+    padding: 50rpx 30rpx 0 30rpx;
+  }
+}
+
+/* 加载状态 */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loading-content {
+  background: white;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  text-align: center;
+  max-width: 300rpx;
+  width: 100%;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid #f0f0f0;
+  border-top: 4rpx solid #ff6b9d;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20rpx auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #333;
+}

@@ -1,0 +1,187 @@
+<!--pages/booking/booking.wxml-->
+<view class="container">
+  <!-- 进度条 -->
+  <view class="progress-bar">
+    <view class="progress-steps">
+      <block wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
+        <view class="step-item {{step >= item ? 'active' : ''}} {{step === item ? 'current' : ''}}">
+          <view class="step-circle">{{item}}</view>
+          <text class="step-label">{{['选择时间','选择美甲师','选择甲型','联系信息','确认'] [item-1]}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 步骤1: 选择时间 -->
+  <view class="step-content" wx:if="{{step === 1}}">
+    <view class="step-title">选择预约时间</view>
+    
+    <!-- 服务信息 -->
+    <view class="service-info">
+      <image class="service-image" src="{{service.image}}" mode="aspectFill"></image>
+      <view class="service-details">
+        <text class="service-name">{{service.name}}</text>
+        <text class="service-duration">{{service.duration}}</text>
+        <text class="service-price">¥{{service.price}}</text>
+      </view>
+    </view>
+
+    <!-- 日期选择 -->
+    <view class="date-section">
+      <text class="section-title">选择日期</text>
+      <view class="date-grid">
+        <block wx:for="{{dates}}" wx:key="date">
+          <view class="date-item {{selectedDate === item.date ? 'selected' : ''}}" bindtap="selectDate" data-date="{{item.date}}">
+            <text class="date-display">{{item.display}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 时间选择 -->
+    <view class="time-section">
+      <text class="section-title">选择时间</text>
+      <view class="time-grid">
+        <block wx:for="{{timeSlots}}" wx:key="*this">
+          <view class="time-item {{selectedTime === item ? 'selected' : ''}}" bindtap="selectTime" data-time="{{item}}">
+            <text class="time-text">{{item}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤2: 选择美甲师 -->
+  <view class="step-content" wx:if="{{step === 2}}">
+    <view class="step-title">选择美甲师</view>
+    
+    <view class="artists-list">
+      <block wx:for="{{nailArtists}}" wx:key="id">
+        <view class="artist-item {{selectedArtist === item.id ? 'selected' : ''}} {{!item.available ? 'disabled' : ''}}" bindtap="selectArtist" data-artist-id="{{item.id}}">
+          <image class="artist-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <view class="artist-info">
+            <view class="artist-header">
+              <text class="artist-name">{{item.name}}</text>
+              <view class="artist-rating">
+                <text class="star">★</text>
+                <text class="rating-value">{{item.rating}}</text>
+              </view>
+            </view>
+            <text class="artist-specialty">{{item.specialty}}</text>
+            <text class="artist-experience">{{item.experience}}</text>
+            <view class="availability-status">
+              <text class="status-text {{item.available ? 'available' : 'unavailable'}}">
+                {{item.available ? '可预约' : '忙碌中'}}
+              </text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 步骤3: 选择甲型 -->
+  <view class="step-content" wx:if="{{step === 3}}">
+    <view class="step-title">选择甲型</view>
+    
+    <view class="nail-styles-grid">
+      <block wx:for="{{availableNailStyles}}" wx:key="id">
+        <view class="nail-style-item {{selectedNail === item.id ? 'selected' : ''}}" bindtap="selectNail" data-nail-id="{{item.id}}">
+          <view class="nail-style-icon">{{item.icon}}</view>
+          <text class="nail-style-name">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 步骤4: 联系信息 -->
+  <view class="step-content" wx:if="{{step === 4}}">
+    <view class="step-title">填写联系信息</view>
+    
+    <view class="contact-form">
+      <view class="form-group">
+        <text class="form-label">姓名 *</text>
+        <input class="form-input" placeholder="请输入您的姓名" bindinput="inputContactInfo" data-field="name" value="{{contactInfo.name}}" />
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">手机号 *</text>
+        <input class="form-input" placeholder="请输入您的手机号" bindinput="inputContactInfo" data-field="phone" value="{{contactInfo.phone}}" type="number" maxlength="11" />
+      </view>
+      
+      <view class="form-group">
+        <text class="form-label">备注</text>
+        <textarea class="form-textarea" placeholder="有什么特殊要求可以告诉我们..." bindinput="inputNotes" value="{{notes}}" maxlength="200"></textarea>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤5: 确认信息 -->
+  <view class="step-content" wx:if="{{step === 5}}">
+    <view class="step-title">确认预约信息</view>
+    
+    <view class="booking-summary">
+      <view class="summary-section">
+        <text class="summary-title">服务信息</text>
+        <view class="summary-item">
+          <text class="item-label">服务项目：</text>
+          <text class="item-value">{{service.name}}</text>
+        </view>
+        <view class="summary-item">
+          <text class="item-label">服务价格：</text>
+          <text class="item-value price">¥{{service.price}}</text>
+        </view>
+        <view class="summary-item">
+          <text class="item-label">服务时长：</text>
+          <text class="item-value">{{service.duration}}</text>
+        </view>
+      </view>
+
+      <view class="summary-section">
+        <text class="summary-title">预约信息</text>
+        <view class="summary-item">
+          <text class="item-label">预约日期：</text>
+          <text class="item-value">{{bookingData.date}}</text>
+        </view>
+        <view class="summary-item">
+          <text class="item-label">预约时间：</text>
+          <text class="item-value">{{bookingData.time}}</text>
+        </view>
+        <view class="summary-item">
+          <text class="item-label">美甲师：</text>
+          <text class="item-value">{{nailArtists.find(a => a.id == bookingData.artistId).name}}</text>
+        </view>
+        <view class="summary-item">
+          <text class="item-label">甲型：</text>
+          <text class="item-value">{{nailStyles.find(s => s.id == bookingData.nailStyle).name}}</text>
+        </view>
+      </view>
+
+      <view class="summary-section">
+        <text class="summary-title">联系信息</text>
+        <view class="summary-item">
+          <text class="item-label">联系人：</text>
+          <text class="item-value">{{bookingData.contactName}}</text>
+        </view>
+        <view class="summary-item">
+          <text class="item-label">手机号：</text>
+          <text class="item-value">{{bookingData.contactPhone}}</text>
+        </view>
+        <view class="summary-item" wx:if="{{bookingData.notes}}">
+          <text class="item-label">备注：</text>
+          <text class="item-value">{{bookingData.notes}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-actions">
+    <view class="action-buttons">
+      <button class="btn btn-secondary" bindtap="cancelBooking" wx:if="{{step > 1}}">取消</button>
+      <button class="btn btn-secondary" bindtap="prevStep" wx:if="{{step > 1 && step < 5}}">上一步</button>
+      <button class="btn btn-primary" bindtap="nextStep" wx:if="{{step < 5}}">下一步</button>
+      <button class="btn btn-primary" bindtap="confirmBooking" wx:if="{{step === 5}}">确认预约</button>
+    </view>
+  </view>
+</view>

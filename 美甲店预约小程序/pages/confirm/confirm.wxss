@@ -1,0 +1,356 @@
+/* pages/confirm/confirm.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fff8fb 0%, #ffeef8 100%);
+  padding-bottom: 40rpx;
+}
+
+/* 成功状态头部 */
+.success-header {
+  background: linear-gradient(135deg, #52c41a, #73d13d);
+  color: white;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.success-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.success-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.success-subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+  display: block;
+}
+
+/* 等待确认头部 */
+.pending-header {
+  background: linear-gradient(135deg, #faad14, #ffc53d);
+  color: white;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.pending-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.pending-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.pending-subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.countdown-bar {
+  background: rgba(255, 255, 255, 0.3);
+  height: 8rpx;
+  border-radius: 4rpx;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 400rpx;
+}
+
+.countdown-progress {
+  background: white;
+  height: 100%;
+  transition: width 1s linear;
+}
+
+/* 已取消头部 */
+.cancelled-header {
+  background: linear-gradient(135deg, #ff4d4f, #ff7875);
+  color: white;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.cancelled-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.cancelled-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.cancelled-subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+  display: block;
+}
+
+/* 预约详情 */
+.booking-details {
+  padding: 0 20rpx;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 8rpx 30rpx rgba(255, 107, 157, 0.1);
+  margin-bottom: 30rpx;
+}
+
+.detail-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+  display: block;
+  text-align: center;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.item-label {
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 500;
+}
+
+.item-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  text-align: right;
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.item-value.price {
+  color: #ff6b9d;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+/* 状态标签 */
+.status-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+
+.status-badge {
+  padding: 15rpx 30rpx;
+  border-radius: 50rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.status-pending {
+  background: rgba(250, 173, 20, 0.1);
+  color: #faad14;
+  border: 2rpx solid #faad14;
+}
+
+.status-confirmed {
+  background: rgba(82, 196, 26, 0.1);
+  color: #52c41a;
+  border: 2rpx solid #52c41a;
+}
+
+.status-cancelled {
+  background: rgba(255, 77, 79, 0.1);
+  color: #ff4d4f;
+  border: 2rpx solid #ff4d4f;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  padding: 0 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.btn {
+  padding: 30rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  background: white;
+  color: #ff6b9d;
+  border: 2rpx solid #ff6b9d;
+}
+
+.btn-outline:active {
+  background: #ff6b9d;
+  color: white;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+  color: white;
+}
+
+.btn-primary:active {
+  background: linear-gradient(135deg, #ff5582, #ff7a99);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff4d4f, #ff7875);
+  color: white;
+}
+
+.btn-danger:active {
+  background: linear-gradient(135deg, #d9363e, #ff5252);
+}
+
+.btn-icon {
+  font-size: 32rpx;
+  margin-right: 15rpx;
+}
+
+/* 温馨提示 */
+.tips-section {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 30rpx 20rpx 0 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.08);
+}
+
+.tips-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.tip-item {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 成功模态框 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40rpx;
+}
+
+.success-modal {
+  background: white;
+  border-radius: 30rpx;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  max-width: 500rpx;
+  width: 100%;
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-icon {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+  display: block;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.modal-message {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 40rpx;
+  display: block;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 25rpx;
+  border-radius: 50rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  border: none;
+}
+
+.modal-btn:active {
+  transform: scale(0.95);
+}

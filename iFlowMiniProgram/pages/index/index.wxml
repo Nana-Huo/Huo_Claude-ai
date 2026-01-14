@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 智能体选择状态 -->
+  <view wx:if="{{selectedAgent}}" class="agent-status">
+    当前使用智能体: {{selectedAgent.name}}
+  </view>
+  
+  <!-- 聊天消息列表 -->
+  <scroll-view scroll-y="true" style="flex: 1;" scroll-into-view="{{toView}}" scroll-with-animation="{{true}}">
+    <view wx:for="{{messages}}" wx:key="id" class="message-container {{item.isUser ? 'user-message' : 'ai-message'}}">
+      <view class="message-content {{item.isUser ? 'user-content' : 'ai-content'}}">
+        {{item.text}}
+      </view>
+    </view>
+    <view id="{{toView}}"></view>
+  </scroll-view>
+  
+  <!-- 输入区域 -->
+  <view class="input-container">
+    <input 
+      class="input-box" 
+      placeholder="输入命令..." 
+      value="{{inputText}}" 
+      bindinput="onInput" 
+      bindconfirm="sendMessage"
+    />
+    <button class="send-btn" bindtap="sendMessage" disabled="{{!inputText}}">发送</button>
+    <button class="send-btn" bindtap="showAgents">智能体</button>
+  </view>
+</view>

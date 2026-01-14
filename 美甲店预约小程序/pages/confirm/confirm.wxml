@@ -1,0 +1,139 @@
+<!--pages/confirm/confirm.wxml-->
+<view class="container">
+  <!-- 预约成功头部 -->
+  <view class="success-header" wx:if="{{bookingData && orderStatus === 'confirmed'}}">
+    <view class="success-icon">✓</view>
+    <text class="success-title">预约成功</text>
+    <text class="success-subtitle">感谢您的预约，我们将为您提供优质的美甲服务</text>
+  </view>
+
+  <!-- 等待确认头部 -->
+  <view class="pending-header" wx:elif="{{bookingData && orderStatus === 'pending'}}">
+    <view class="pending-icon">⏰</view>
+    <text class="pending-title">等待确认</text>
+    <text class="pending-subtitle">请在 {{formatCountdown(countdown)}} 内完成支付</text>
+    <view class="countdown-bar">
+      <view class="countdown-progress" style="width: {{(countdown/300)*100}}%"></view>
+    </view>
+  </view>
+
+  <!-- 已取消头部 -->
+  <view class="cancelled-header" wx:elif="{{bookingData && orderStatus === 'cancelled'}}">
+    <view class="cancelled-icon">✗</view>
+    <text class="cancelled-title">预约已取消</text>
+    <text class="cancelled-subtitle">您的预约已被取消</text>
+  </view>
+
+  <!-- 预约详情 -->
+  <view class="booking-details" wx:if="{{bookingData}}">
+    <view class="detail-card">
+      <text class="detail-title">预约信息</text>
+      
+      <view class="detail-item">
+        <text class="item-label">预约单号</text>
+        <text class="item-value">{{orderNumber}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="item-label">服务项目</text>
+        <text class="item-value">{{bookingData.service.name}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="item-label">服务价格</text>
+        <text class="item-value price">¥{{bookingData.service.price}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="item-label">预约时间</text>
+        <text class="item-value">{{bookingData.date}} {{bookingData.time}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="item-label">美甲师</text>
+        <text class="item-value">{{bookingData.artistName || '系统分配'}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="item-label">甲型</text>
+        <text class="item-value">{{bookingData.nailStyleName || '方形'}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="item-label">联系人</text>
+        <text class="item-value">{{bookingData.contactName}}</text>
+      </view>
+      
+      <view class="detail-item">
+        <text class="item-label">联系电话</text>
+        <text class="item-value">{{bookingData.contactPhone}}</text>
+      </view>
+      
+      <view class="detail-item" wx:if="{{bookingData.notes}}">
+        <text class="item-label">备注</text>
+        <text class="item-value">{{bookingData.notes}}</text>
+      </view>
+    </view>
+
+    <!-- 状态标签 -->
+    <view class="status-section">
+      <view class="status-badge status-{{orderStatus}}">
+        <text class="status-text">
+          {{orderStatus === 'pending' ? '待确认' : orderStatus === 'confirmed' ? '已确认' : '已取消'}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="btn btn-outline" bindtap="contactService">
+      <text class="btn-icon">📞</text>
+      联系客服
+    </button>
+    
+    <button class="btn btn-outline" bindtap="shareBooking">
+      <text class="btn-icon">📤</text>
+      分享预约
+    </button>
+    
+    <button class="btn btn-primary" bindtap="confirmOrder" wx:if="{{orderStatus === 'pending'}}">
+      <text class="btn-icon">💳</text>
+      确认预约
+    </button>
+    
+    <button class="btn btn-danger" bindtap="cancelOrder" wx:if="{{orderStatus === 'pending'}}">
+      <text class="btn-icon">❌</text>
+      取消预约
+    </button>
+    
+    <button class="btn btn-primary" bindtap="goToOrders" wx:if="{{orderStatus === 'confirmed'}}">
+      <text class="btn-icon">📋</text>
+      查看订单
+    </button>
+  </view>
+
+  <!-- 温馨提示 -->
+  <view class="tips-section">
+    <text class="tips-title">💡 温馨提示</text>
+    <view class="tips-list">
+      <text class="tip-item">• 请提前10分钟到达店内</text>
+      <text class="tip-item">• 如需改期，请提前2小时联系客服</text>
+      <text class="tip-item">• 请保持指甲清洁，避免涂抹指甲油</text>
+      <text class="tip-item">• 首次预约享受8折优惠</text>
+    </view>
+  </view>
+</view>
+
+<!-- 成功模态框 -->
+<view class="modal-overlay" wx:if="{{showSuccessModal}}" bindtap="hideSuccessModal">
+  <view class="success-modal" catchtap="">
+    <view class="modal-icon">🎉</view>
+    <text class="modal-title">预约成功！</text>
+    <text class="modal-message">您的美甲预约已确认，我们将为您提供专业的美甲服务</text>
+    <view class="modal-actions">
+      <button class="modal-btn btn-secondary" bindtap="hideSuccessModal">知道了</button>
+      <button class="modal-btn btn-primary" bindtap="goToOrders">查看订单</button>
+    </view>
+  </view>
+</view>
